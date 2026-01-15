@@ -4,7 +4,7 @@ import { TasksLoading } from "@/components/ui/TaskLoading";
 import { useCreateTaskMutation, useTasksQuery } from "@/lib/queries";
 import type { Task, TaskStatusFilter } from "@/types/type";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type TasksSearch = {
   search?: string;

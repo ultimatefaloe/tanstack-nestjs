@@ -1,7 +1,6 @@
 import {
   createFileRoute,
   useNavigate,
-  useParams,
 } from "@tanstack/react-router";
 import { useState } from "react";
 import {
@@ -9,14 +8,10 @@ import {
   Trash2,
   ArrowLeft,
   Calendar,
-  User,
   Clock,
   CheckCircle,
   PlayCircle,
   AlertCircle,
-  MoreVertical,
-  Copy,
-  Share2,
 } from "lucide-react";
 import type { Task } from "@/types/type";
 import {
@@ -37,7 +32,6 @@ function TaskDetail() {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [showMoreActions, setShowMoreActions] = useState(false);
   let task: Task;
 
   const createUpdateMutation = useUpdateTaskMutation();
@@ -161,7 +155,7 @@ function TaskDetail() {
                 {/* Pending Button */}
                 <button
                   onClick={() => handleStatusUpdate("pending")}
-                  disabled={task.status === "pending"}
+                  disabled={task.status === "pending" || isEditing}
                   className={`flex flex-col items-center p-6 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                     task.status === "pending"
                       ? "border-yellow-500 bg-yellow-50"
@@ -189,7 +183,7 @@ function TaskDetail() {
                 {/* In Progress Button */}
                 <button
                   onClick={() => handleStatusUpdate("in-progress")}
-                  disabled={task.status === "in-progress"}
+                  disabled={task.status === "in-progress" || isEditing}
                   className={`flex flex-col items-center p-6 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                     task.status === "in-progress"
                       ? "border-blue-500 bg-blue-50"
@@ -219,7 +213,7 @@ function TaskDetail() {
                 {/* Done Button */}
                 <button
                   onClick={() => handleStatusUpdate("done")}
-                  disabled={task.status === "done"}
+                  disabled={task.status === "done" || isEditing}
                   className={`flex flex-col items-center p-6 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
                     task.status === "done"
                       ? "border-green-500 bg-green-50"
