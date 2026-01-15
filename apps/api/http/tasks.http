@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:3000
+
+### Get all tasks
+GET {{baseUrl}}/tasks
+
+### Get task by  id
+GET {{baseUrl}}/tasks/1
+
+### Create a task
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "Created via .http file",
+  "status": "pending"
+}
+
+### Update a task
+PATCH {{baseUrl}}/tasks/1
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "Created via .http file",
+  "status": "pending"
+}
+
+### Delete task
+DELETE {{baseUrl}}/tasks/1
